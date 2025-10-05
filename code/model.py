@@ -156,7 +156,7 @@ def load_model():
     mlflow.set_tracking_uri(mlflow_uri)
 
     run_id = os.getenv("RUN_ID")
-    model_name = os.getenv("MODEL_NAME", "st125985-a3-model")
+    model_name = os.getenv("MODEL_NAME", "st125989-a3-model")
     model_uri = f"runs:/{run_id}/model" if run_id else f"models:/{model_name}/Production"
 
     for attempt in range(5):
