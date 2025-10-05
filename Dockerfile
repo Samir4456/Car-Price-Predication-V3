@@ -1,21 +1,10 @@
-FROM python:3.10.12-bookworm
+FROM python:3.12.11-slim
 
-WORKDIR /root/code
+WORKDIR /app
 
-# Copy requirements first to leverage caching
 COPY requirements.txt .
-
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Set PYTHONPATH
-ENV PYTHONPATH="/root/code:${PYTHONPATH}"
+COPY . .
 
-# Copy source code
-COPY ./code /root/code
-
-# Expose Dash port
-EXPOSE 8060
-
-# Start Dash app
-CMD ["python3", "/root/code/app.py"]
+CMD ["python", "app.py"]
